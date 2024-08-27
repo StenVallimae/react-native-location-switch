@@ -21,8 +21,8 @@ buildscript {
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 26
-    buildToolsVersion "26.0.1"
+    compileSdkVersion 34
+    // buildToolsVersion "26.0.1"
     namespace 'org.pweitz.reactnative.locationswitch'
     defaultConfig {
         minSdkVersion 16
