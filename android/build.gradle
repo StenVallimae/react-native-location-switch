@@ -3,7 +3,7 @@ import groovy.json.JsonSlurper
 def computeVersionName() {
     // dynamically retrieve version from package.json
     def slurper = new JsonSlurper()
-    def json = slurper.parse(file('../package.json'), "utf-8")
+    def json = slurper.parse(new File('../package.json'), "utf-8")  // Corrected to use `new File()`
     return json.version
 }
 
@@ -14,7 +14,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.4.2'
+        classpath 'com.android.tools.build:gradle:8.5.2'
     }
 }
 
@@ -23,7 +23,7 @@ apply plugin: 'com.android.library'
 android {
     compileSdkVersion 26
     buildToolsVersion "26.0.1"
-
+    namespace 'org.pweitz.reactnative.locationswitch'
     defaultConfig {
         minSdkVersion 16
         targetSdkVersion 26
@@ -36,11 +36,11 @@ android {
 }
 
 repositories {
+    google()  // Added google() here as it's required by some dependencies
     mavenCentral()
 }
 
-
 dependencies {
-    implementaion 'com.facebook.react:react-native:+'
-    implementaion 'com.google.android.gms:play-services-location:11.0.0'
+    implementation 'com.facebook.react:react-native:+' // Corrected 'implementaion' to 'implementation'
+    implementation 'com.google.android.gms:play-services-location:11.0.0' // Corrected 'implementaion' to 'implementation'
 }
